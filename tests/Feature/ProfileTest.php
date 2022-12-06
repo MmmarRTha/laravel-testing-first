@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ProfileTest extends TestCase
 {
-    public function test_upload()
+    public function test_upload_profile_photo()
     {
         Storage::fake('local');
 
@@ -21,5 +21,14 @@ class ProfileTest extends TestCase
         $this->assertTrue(Storage::disk('local')->exists('profiles/' . $photo->hashName()));
 
         $response->assertRedirect('profile');
+    }
+
+    public function test_upload_photo_profile_validation()
+    {
+        $response = $this->post('profile', [
+            'photo' => ''
+        ]);
+
+        $response->assertSessionHasErrors('photo');
     }
 }

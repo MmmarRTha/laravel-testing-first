@@ -7,10 +7,15 @@
     <title>Profile Test</title>
 </head>
 <body>
+    @if ( $errors->any() )
+        @foreach ( $errors->all() as $error )
+            <small>{{ $error }}</small>
+        @endforeach
+    @endif
     <form action="profile" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="file" name="photo">
-        <button type="submit">Submit</button>
+        <button type="submit">Upload</button>
     </form>
 </body>
 </html>

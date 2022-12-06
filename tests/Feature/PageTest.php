@@ -8,14 +8,14 @@ use Tests\TestCase;
 
 class PageTest extends TestCase
 {
-    public function test_home()
+    public function test_home_status_200()
     {
         $response = $this->get('/');
 
         $response->assertStatus(200);
     }
 
-    public function test_about()
+    public function test_about_status_200()
     {
         $response = $this->get('about');
 

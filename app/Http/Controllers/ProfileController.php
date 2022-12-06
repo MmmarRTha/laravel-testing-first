@@ -8,6 +8,10 @@ class ProfileController extends Controller
 {
     public function upload(Request $request)
     {
+        $request->validate([
+            'photo' => 'required|image'
+        ]);
+        
         $request->file('photo')->store('profiles');
     
         return redirect('profile');

@@ -11,7 +11,7 @@ class FunctionsTest extends TestCase
      *
      * @return void
      */
-    public function test_email()
+    public function test_email_validation_by_function()
     {
         $result = validate_email('martha@me.com');
         $this->assertTrue($result);
